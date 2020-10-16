@@ -17,10 +17,10 @@ if (process.env.NODE_ENV !== 'production') {
   // variables are loaded.
   //
   // A) Uncomment this lines:
-  // dotenv.config({
-  //   path: path.join(__dirname, '../.env'),
-  //   example: path.join(__dirname, '../.env.example')
-  // })
+  dotenv.config({
+    path: path.join(__dirname, '../.env'),
+    example: path.join(__dirname, '../.env.example')
+  })
 }
 
 const config = {
@@ -28,22 +28,22 @@ const config = {
     env: process.env.NODE_ENV || 'development',
     root: path.join(__dirname, '..'),
     port: process.env.PORT || 3000,
-    ip: process.env.IP || '0.0.0.0',
+    ip: process.env.IP || '127.0.0.1',
     apiRoot: process.env.API_ROOT || '',
     // >>> Here is where the environment
     // variables are set to config object.
     // This object is exported.
     //
     // A) Uncomment this line (SECRET TO GENERATE THE JWT TOKEN):
-    // jwtSecret: requireProcessEnv('JWT_SECRET'),
+    jwtSecret: requireProcessEnv('JWT_SECRET'),
     // A) Uncomment this lines (MONGO OPTIONS):
-    // mongo: {
-    //   options: {
-    //     useUnifiedTopology: true,
-    //     useNewUrlParser: true,
-    //     useCreateIndex: true,
-    //   }
-    // }
+    mongo: {
+      options: {
+        useUnifiedTopology: true,
+        useNewUrlParser: true,
+        useCreateIndex: true,
+      }
+    }
   },
   test: { },
   development: {

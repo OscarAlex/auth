@@ -3,7 +3,7 @@ const { Router } = require('express');
 // importation ('require').
 //
 // A) Uncomment this line:
-// const main = require('./main');
+const main = require('./main');
 
 const router = new Router()
 
@@ -11,6 +11,6 @@ const router = new Router()
 // registration
 //
 // A) Uncomment this line:
-// router.use(main.path, main.router)
+router.use(main.path, main.router)
 
 module.exports = router;

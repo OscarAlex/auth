@@ -10,15 +10,12 @@ const api = require('./api');
 // server start running
 //
 // A) Uncomment this lines:
-// const app = express(apiRoot, api);
-// const server = http.createServer(app);
-
+const app = express(apiRoot, api);
+const server = http.createServer(app);
 
 
 // >> Here will be the connection
 // to mongodb.
-
-
 
 setImmediate(() => {
   server.listen(port, ip, () => {
