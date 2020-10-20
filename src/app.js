@@ -16,28 +16,19 @@ const server = http.createServer(app);
 
 // >> Here will be the connection
 // to mongodb.
+if(mongo.uri) {
+  mongoose.connect(mongo.uri).then(() => console.log('Ready'));
+}
+
 
 var bodyParser = require('body-parser');
-const UserController = require('./api/user/controller');
-var jsonParser = bodyParser.json()
-app.post('/user', jsonParser, function (req, res) {
-  if (!req.body)
-      return res.sendStatus(400)
-  console.log(req.body);
-
-  var user = req.body;
-  res.json(user)
-})
-
-
+var jsonParser = bodyParser.json();
 const endpoints = {};
 endpoints.save = async (req, res) => {
   const user = req.body;
-  console.log('Save?');
-  //model.create(user).then(r => console.log(r)).catch(console.log);
+  //console.log('Save?');
   console.log(user);
-  const created= model(user);
-  //const created = await model.create(user);
+  const created = await model.create(user);
   console.log(created);
   res.json({created});
 }
