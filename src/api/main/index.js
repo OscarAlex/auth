@@ -1,7 +1,6 @@
 const router = require('express').Router();
 // A) Uncomment this line:
 const MainController = require('./controller');
-
 const path = '';
 
 // >> Here will be the
