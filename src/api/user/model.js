@@ -27,7 +27,7 @@ UserSchema.pre('save', function(next) {
 // >> Here will be the User methods for the schema.
 //UserSchema.methods = {};
 /*
-UserSchema.methods.encryptPassword= async password => {
+UserSchema.methods.encryptPassword= async (password) => {
   //Asíncrono
   const salt= await bcrypt.genSalt(10);
   return await bcrypt.hash(this.password, salt);
