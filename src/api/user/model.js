@@ -32,12 +32,12 @@ UserSchema.methods.encryptPassword= async (password) => {
   const salt= await bcrypt.genSalt(10);
   return await bcrypt.hash(this.password, salt);
 };
-
-//Comparar 2 cifrados
-UserSchema.methods.matchPassword= async function(password) {
-  return await bcrypt.compare(password, this.password)
-}
 */
+//Compare passwords
+UserSchema.methods.matchPassword = function(password) {
+  return bcrypt.compare(password, this.password);
+}
+
 // >> Here will be the User model using the User schema.
 //const UserModel;
 const UserModel= mongoose.model('users', UserSchema, 'collection');
