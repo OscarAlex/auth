@@ -1,27 +1,14 @@
 const {model} = require('./model');
 const UserController = {};
-
 const jwt = require('jsonwebtoken');
 const config= require('../../services/jwt');
 
 // >> Here will be the
 // endpoints for the Users.
 //Get user
-UserController.getUser = async (req, res) => {
-    //Header token
-    const token = req.headers['x-access-token'];
-    //If no token is provided, return 401
-    if(!token){
-        return res.status(401).json({
-            auth: false,
-            message: 'No token provided'
-        });
-    }
-
-    //Verify token
-    const decoded = jwt.verify(token, config.secret);
+UserController.getUser = async (req, res, next) => {
     //Find user by id, password not passing
-    const user = await model.findById(decoded.id, {password: 0});
+    const user = await model.findById(req.userId, {password: 0});
     //If user not found, return 404
     if(!user){
         return res.status(404).send('No user found');
